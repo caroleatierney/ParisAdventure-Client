@@ -7,7 +7,7 @@ function Header() {
     <header className="flex smallMobile:flex-col desktop:flex-row items-center justify-evenly px-4 py-2 ">
       <Navbar className="bg-transparent">
         <div>
-          <p className="font-bold text-center bg-transparent text-3xl !font-[Margarine,cursive] ">
+          <p className="font-bold text-gray-500 text-center bg-transparent text-4xl !font-[Margarine,cursive] ">
             Our Paris Adventure
           </p>
 

@@ -2,14 +2,14 @@ import React from "react";
 
 export default function monaLisa() {
   return (
-    <div>
-      <h1 className="vibesXl pt-5">The Mona Lisa</h1>
-      <div className="d-flex flex-column align-content-center">
-        <div className="m-1">
+    <div className="flex flex-col items-center justify-center">
+      <h1 className="text-5xl pt-3 text-center">The Mona Lisa</h1>
+      <div className="w-3/4 flex flex-row justify-center min-h-screen mt-6">
+        <div className="m-1 w-1/3 p-2">
           <img src="https://i.imgur.com/pCZrlUb.jpg" alt="Mona Lisa" />
         </div>
-        <div>
-          <p className="montserratMd">
+        <div className="w-2/3 p-4 mt-3 text-center text-xl inset-0 backdrop-blur-sm">
+          <p className="p-4 bg-transparent">
             The Mona Lisa is a portait of Lisa Giacondo, painted by Leonardo Da
             Vinci somewhere between 1503 and 1519. It was commissioned by her
             husband, Francesco di Bartolomeo del Giocondo. The painting is a
@@ -26,28 +26,26 @@ export default function monaLisa() {
             for two years until a former Louvre worker tried selling it in
             Florence, Italy to an art dealer who alerted the authorities.
           </p>
+
+          <p>The information on this page is from the following websites:</p>
+
+          <ul>
+            <li>
+              <a href="https://en.wikipedia.org/wiki/Mona_Lisa" target="_blank">
+                Wikepedia
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.britannica.com/topic/Mona-Lisa-painting"
+                target="_blank"
+              >
+                Britannica
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
-
-      <p className="montserratMd pt-5">
-        The information on this page is from the following websites:
-      </p>
-
-      <ul>
-        <li style={{ fontSize: "1vw" }}>
-          <a href="https://en.wikipedia.org/wiki/Mona_Lisa" target="_blank">
-            Wikepedia
-          </a>
-        </li>
-        <li style={{ fontSize: "1vw" }}>
-          <a
-            href="https://www.britannica.com/topic/Mona-Lisa-painting"
-            target="_blank"
-          >
-            Britannica
-          </a>
-        </li>
-      </ul>
     </div>
   );
 }
