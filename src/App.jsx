@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header     from "./components/header";
 import Itinerary  from "./components/itinerary";
 import MonaLisa   from "./components/monaLisa";
-import HomeScreen from "./Routes/Home/HomeScreen";
+import HomeScreen from "./Routes/Home/homeScreen";
 import BackGround from "./Assets/background.jpg";
 
 function App() {

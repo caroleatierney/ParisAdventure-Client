@@ -8,7 +8,7 @@ export default function monaLisa() {
         <div className="m-1 w-1/3 p-2">
           <img src="https://i.imgur.com/pCZrlUb.jpg" alt="Mona Lisa" />
         </div>
-        <div className="w-2/3 p-4 mt-3 text-center text-xl inset-0 backdrop-blur-sm">
+        <div className="w-2/3 p-4 mt-3 text-center text-xl backdrop-blur-sm h-1/2">
           <p className="p-4 bg-transparent">
             The Mona Lisa is a portait of Lisa Giacondo, painted by Leonardo Da
             Vinci somewhere between 1503 and 1519. It was commissioned by her

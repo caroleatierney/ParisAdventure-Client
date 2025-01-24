@@ -1,10 +1,32 @@
-import React from "react";
 import { Carousel } from "flowbite-react";
-// test
+
 export default function Itinerary() {
+
   return (
-    <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
-      <Carousel >
+    <div className="h-96">
+      <Carousel>
+        <img
+          src="https://flowbite.com/docs/images/carousel/carousel-1.svg"
+          alt="..."
+        />
+        <img
+          src="https://flowbite.com/docs/images/carousel/carousel-2.svg"
+          alt="..."
+        />
+        <img
+          src="https://flowbite.com/docs/images/carousel/carousel-3.svg"
+          alt="..."
+        />
+        <img
+          src="https://flowbite.com/docs/images/carousel/carousel-4.svg"
+          alt="..."
+        />
+        <img
+          src="https://flowbite.com/docs/images/carousel/carousel-5.svg"
+          alt="..."
+        />
+      </Carousel>
+      <Carousel>
         <img
           src="https://i.imgur.com/KiDzz21.jpg"
           alt="Saint_Léger_Sur_Dheune"
@@ -20,12 +42,59 @@ export default function Itinerary() {
   );
 }
 
+// import React from "react";
+// import { Carousel } from "flowbite-react";
 
+// export default function Itinerary() {
+//   return (
+//     <div className="h-[400px]">
+//       <Carousel data-activ="true" slideInterval={100}>
+//         <img
+//           className="max-w-full max-h-full object-contain"
+//           src="https://i.imgur.com/KiDzz21.jpg"
+//           alt="Saint_Léger_Sur_Dheune"
+//         />
+//         <img
+//           className="max-w-full max-h-full object-contain"
+//           src="https://i.imgur.com/0B9HXi5.jpg"
+//           alt="Château de Rully"
+//         />
+//         <img
+//           className="max-w-full max-h-full object-contain"
+//           src="https://i.imgur.com/UwfFNZx.jpg"
+//           alt="Saône River"
+//         />
+//         <img
+//           className="max-w-full max-h-full object-contain"
+//           src="https://i.imgur.com/gouXWe0.jpg"
+//           alt="Chalon-sur-Saône"
+//         />
+//         <img
+//           className="max-w-full max-h-full object-contain"
+//           src="https://i.imgur.com/mYs8kHQ.jpg"
+//           alt="chateau_de_chalon"
+//         />
+//         <img
+//           className="max-w-full max-h-full object-contain"
+//           src="https://i.imgur.com/ovDvvaq.jpg"
+//           alt="Saint-Jean de-Losne"
+//         />
+//         <img
+//           className="max-w-full max-h-full object-contain"
+//           src="https://i.imgur.com/31W7dVQ.jpg"
+//           alt="Air Balloons - Paris"
+//         />
+//       </Carousel>
+//     </div>
+//   );
+// }
 
-{/* <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0 z-20" data-carousel-item="">
+{
+  /* <div class="duration-700 ease-in-out absolute inset-0 transition-all transform translate-x-0 z-20" data-carousel-item="">
     <img src="https://placeimg.com/800/300/rabbit" class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
     <span class="absolute top-1/2 left-1/2 text-2xl font-semibold text-white -translate-x-1/2 -translate-y-1/2 sm:text-3xl dark:text-gray-800">First Slide</span>
-</div> */}
+</div> */
+}
 
 //    <div className="d-flex flex-column justify-content-center align-items-center">
 //       <p className="vibes montserratMdLg blur">About Our Trip</p>
