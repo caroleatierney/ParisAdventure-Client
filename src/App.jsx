@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Header     from "./components/header";
-import Itinerary  from "./components/itinerary";
-import MonaLisa   from "./components/monaLisa";
+import Itinerary  from "./routes/France/itinerary";
+import MonaLisa   from "./routes/France/monaLisa";
 import HomeScreen from "./routes/Home/homeScreen";
-import BackGround from "./Assets/background.jpg";
+import BackGround from "./assets/background.jpg";
 
 function App() {
    
