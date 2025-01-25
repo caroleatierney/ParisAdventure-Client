@@ -10,7 +10,7 @@ export default function monaLisa() {
         </div>
         <div className="w-2/3 p-4 mt-3 text-center text-xl backdrop-blur-sm h-1/2">
           <p className="p-4 bg-transparent">
-            The Mona Lisa is a portait of Lisa Giacondo, painted by Leonardo Da
+            The Mona Lisa is a portrait of Lisa Giacondo, painted by Leonardo Da
             Vinci somewhere between 1503 and 1519. It was commissioned by her
             husband, Francesco di Bartolomeo del Giocondo. The painting is a
             half length portrait whose medium was oil on a poplar wood panel. It
