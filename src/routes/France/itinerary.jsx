@@ -1,4 +1,4 @@
-import { Carousel } from "flowbite-react";
+import { Carousel, Flowbite } from "flowbite-react";
 
 export default function Itinerary() {
 
@@ -26,7 +26,7 @@ export default function Itinerary() {
           alt="..."
         />
       </Carousel>
-      <Carousel>
+      {/* <Carousel>
         <img
           src="https://i.imgur.com/KiDzz21.jpg"
           alt="Saint_Léger_Sur_Dheune"
@@ -37,7 +37,7 @@ export default function Itinerary() {
         <img src="https://i.imgur.com/mYs8kHQ.jpg" alt="chateau_de_chalon" />
         <img src="https://i.imgur.com/ovDvvaq.jpg" alt="Saint-Jean de-Losne" />
         <img src="https://i.imgur.com/31W7dVQ.jpg" alt="Air Balloons - Paris" />
-      </Carousel>
+      </Carousel> */}
     </div>
   );
 }
