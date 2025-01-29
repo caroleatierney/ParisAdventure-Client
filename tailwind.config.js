@@ -6,15 +6,18 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "node_modules/flowbite-react/lib/esm/**/*.js",
-    // "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
+    // "node_modules/flowbite-react/lib/esm/**/*.js",
+    "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
     "./src/styles/tailwind.css",
   ],
   theme: {
     extend: {
-      // backgroundImage: {
-      //   "home-page-bg": "url(.src/assets/background.jpeg)",
-      // },
+      classes: {
+        "slock-arrow.custom-arrow": {
+          display: "block",
+          background: "red",
+        },
+      },
       fontFamily: {
         margarine: ["Margarine", "cursive"],
       },
