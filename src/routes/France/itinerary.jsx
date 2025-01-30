@@ -2,8 +2,28 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { PiArrowSquareLeft } from "react-icons/pi";
+import { PiArrowSquareRight } from "react-icons/pi";
 
 export default function Itinerary() {
+
+  const SamplePrevArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <div onClick={onClick} className={`arrow ${className}`}>
+        <PiArrowSquareLeft class="arrows" style={{ color: "white" }} />
+      </div>
+    );
+  };
+
+   const SampleNextArrow = (props) => {
+     const { className, style, onClick } = props;
+     return (
+       <div onClick={onClick} className={`arrow ${className}`}>
+         <PiArrowSquareRight class="arrows" style={{ color: "white" }} />
+       </div>
+     );
+   };
 
   const settings = {
     dots: true,
@@ -11,6 +31,8 @@ export default function Itinerary() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    nextArrow: <SampleNextArrow to="next" />,
+    prevArrow: <SamplePrevArrow to="prev" />,
   };
 
   return (
@@ -26,8 +48,6 @@ export default function Itinerary() {
       <div className="h-[500px] w-full max-w-[800px] mx-auto">
         <Slider
           {...settings}
-          nextArrow={<div className="slick-arrow slick-next custom-arrow" />}
-          prevArrow={<div className="slick-arrow slick-prev custom-arrow" />}
         >
           <div className="flex justify-center items-center h-[500px]">
             <img
