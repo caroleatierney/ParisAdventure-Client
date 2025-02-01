@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useRef } from "react";
 import Slider from "react-slick";
+import Left from "./../../assets/leftArrow.png";
+import Right from "./../../assets/rightArrow.png";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { PiArrowSquareLeft } from "react-icons/pi";
-import { PiArrowSquareRight } from "react-icons/pi";
 
 export default function Itinerary() {
+  const sliderRef = useRef(null);
 
   const SamplePrevArrow = (props) => {
     const { className, style, onClick } = props;
     return (
       <div onClick={onClick} className={`arrow ${className}`}>
-        <PiArrowSquareLeft class="arrows" style={{ color: "white" }} />
+        <img
+          src={Left}
+          alt="Previous"
+          className="arrow-image"
+          style={{ width: "150px", height: "150px" }}
+        />
       </div>
     );
   };
@@ -20,7 +26,12 @@ export default function Itinerary() {
      const { className, style, onClick } = props;
      return (
        <div onClick={onClick} className={`arrow ${className}`}>
-         <PiArrowSquareRight class="arrows" style={{ color: "white" }} />
+         <img
+           src={Right}
+           alt="Next"
+           className="arrow-image"
+           style={{ width: "1500px", height: "150px" }}
+         />
        </div>
      );
    };
@@ -31,15 +42,15 @@ export default function Itinerary() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    nextArrow: <SampleNextArrow to="next" />,
-    prevArrow: <SamplePrevArrow to="prev" />,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
   };
 
   return (
     <div
-      className="slider-container"
+      className="slider-container relative"
       style={{
-        height: "500px",
+        height: "600px",
         width: "100%",
         maxWidth: "800px",
         margin: "0 auto",
@@ -47,7 +58,7 @@ export default function Itinerary() {
     >
       <div className="w-full max-w-[800px] mx-auto">
         <Slider {...settings}>
-          <div className="relative min-h-[500px] w-full">
+          <div className="relative min-h-[600px] w-full">
             <img
               className="w-full h-full object-cover object-center"
               src="https://i.imgur.com/KiDzz21.jpg"
