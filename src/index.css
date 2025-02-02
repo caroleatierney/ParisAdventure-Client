@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Margarine&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sofia&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -28,14 +29,33 @@
   right: 20px;
 }
 
-.slick-arrow.slick-next:hover,
+/* .slick-arrow.slick-next:hover,
 .slick-arrow.slick-prev:hover
 {
     background-color: #ee9b9b;
     opacity: 1;
-}
+} */
 
 .slick-prev::before,
 .slick-next::before{
    display:none;    
+}
+
+/* Ensure dots are positioned correctly */
+.slick-dots {
+  position: absolute !important; /* Make dots absolute */
+  bottom: 16px; /* Adjust this value to move dots closer/further from bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10; /* Ensure dots appear above other content */
+}
+
+/* Customize dot size and appearance */
+.slick-dots li button::before {
+  font-size: 12px; /* Adjust dot size */
+  color: #999; /* Default dot color */
+}
+
+.slick-dots li.slick-active button::before {
+  color: red; /* Active dot color */
 }

@@ -3,12 +3,14 @@ import React from "react";
 export default function monaLisa() {
   return (
     <div className="flex flex-col items-center justify-center">
-      <h1 className="text-5xl pt-3 text-center">The Mona Lisa</h1>
+      <h1 className="text-5xl pt-3 text-center font-sofia backdrop-blur-sm">
+        The Mona Lisa
+      </h1>
       <div className="w-3/4 flex flex-row justify-center min-h-screen mt-6">
         <div className="m-1 w-1/3 p-2">
           <img src="https://i.imgur.com/pCZrlUb.jpg" alt="Mona Lisa" />
         </div>
-        <div className="w-2/3 p-4 mt-3 text-center text-xl backdrop-blur-sm h-1/2">
+        <div className="w-2/3 p-4 mt-3 text-center text-xl font-serif backdrop-blur-sm h-1/2">
           <p className="p-4 bg-transparent">
             The Mona Lisa is a portrait of Lisa Giacondo, painted by Leonardo Da
             Vinci somewhere between 1503 and 1519. It was commissioned by her
@@ -31,7 +33,11 @@ export default function monaLisa() {
 
           <ul>
             <li>
-              <a href="https://en.wikipedia.org/wiki/Mona_Lisa" target="_blank">
+              <a
+                href="https://en.wikipedia.org/wiki/Mona_Lisa"
+                target="_blank"
+                className="hover:text-red-500"
+              >
                 Wikepedia
               </a>
             </li>
@@ -39,6 +45,7 @@ export default function monaLisa() {
               <a
                 href="https://www.britannica.com/topic/Mona-Lisa-painting"
                 target="_blank"
+                className="hover:text-red-500"
               >
                 Britannica
               </a>

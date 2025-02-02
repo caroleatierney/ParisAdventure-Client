@@ -38,6 +38,12 @@ export default function Itinerary() {
 
   const settings = {
     dots: true,
+    dotsClass: "slick-dots absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 flex justify-center",
+    customPaging: (i) => (
+      <div className="relative">
+        <div className="dot w-3 h-3 rounded-full bg-red-500 opacity-80 hover:opacity-100 transition-opacity duration-300"></div>
+      </div>
+    ),
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -56,16 +62,16 @@ export default function Itinerary() {
         margin: "0 auto",
       }}
     >
-      <div className="w-full max-w-[800px] mx-auto">
+      <div className="w-full max-w-[800px] mx-auto font-serif">
         <Slider {...settings}>
-          <div className="relative min-h-[600px] w-full">
+          <div className="relative min-h-[500px] w-full">
             <img
-              className="w-full h-full object-cover object-center"
+              className="w-full h-[500px] object-cover object-center"
               src="https://i.imgur.com/KiDzz21.jpg"
               alt="Saint_Léger_Sur_Dheune"
             />
             <div className="bg-pink bg-opacity-30 backdrop-blur-md flex flex-col justify-center items-center pb-4 pt-2">
-              <p className="text-center text-gray-600 mb-2">
+              <p className="text-center text-gray-600 mb-2 font-bold underline text-xl">
                 Sunday, October 29, 2023
               </p>
               <p className="text-sm text-gray-600 text-center">
@@ -83,7 +89,7 @@ export default function Itinerary() {
               alt="Château de Rully"
             />
             <div className="bg-pink bg-opacity-30 backdrop-blur-md flex flex-col justify-center items-center pb-4 pt-2">
-              <p className="text-center text-gray-600 mb-2">
+              <p className="text-center text-gray-600 mb-2 font-bold underline text-xl">
                 Monday, October 30, 2023
               </p>
               <p className="text-sm text-gray-600 text-center">
@@ -102,7 +108,7 @@ export default function Itinerary() {
               alt="Saône River"
             />
             <div className="bg-pink bg-opacity-30 backdrop-blur-md flex flex-col justify-center items-center pb-4 pt-2">
-              <p className="text-center text-gray-600 mb-2">
+              <p className="text-center text-gray-600 mb-2 font-bold underline text-xl">
                 Tuesday, October 31, 2023
               </p>
               <p className="text-sm text-gray-600 text-center">
@@ -120,7 +126,7 @@ export default function Itinerary() {
               alt="Chalon-sur-Saône"
             />
             <div className="bg-pink bg-opacity-30 backdrop-blur-md flex flex-col justify-center items-center pb-4 pt-2">
-              <p className="text-center text-gray-600 mb-2">
+              <p className="text-center text-gray-600 mb-2 font-bold underline text-xl">
                 Wednesday, November 1, 2023
               </p>
               <p className="text-sm text-gray-600 text-center">
@@ -139,7 +145,7 @@ export default function Itinerary() {
               alt="chateau_de_chalon"
             />
             <div className="bg-pink bg-opacity-30 backdrop-blur-md flex flex-col justify-center items-center pb-4 pt-2">
-              <p className="text-center text-gray-600 mb-2">
+              <p className="text-center text-gray-600 mb-2 font-bold underline text-xl">
                 Thursday, November 2, 2023
               </p>
               <p className="text-sm text-gray-600 text-center">
@@ -157,7 +163,7 @@ export default function Itinerary() {
               alt="Saint-Jean de-Losne"
             />
             <div className="bg-pink bg-opacity-30 backdrop-blur-md flex flex-col justify-center items-center pb-4 pt-2">
-              <p className="text-center text-gray-600 mb-2">
+              <p className="text-center text-gray-600 mb-2 font-bold underline text-xl">
                 Friday, November 3, 2023
               </p>
               <p className="text-sm text-gray-600 text-center">
@@ -175,7 +181,7 @@ export default function Itinerary() {
               alt="Air Balloons - Paris"
             />
             <div className="bg-pink bg-opacity-30 backdrop-blur-md flex flex-col justify-center items-center pb-4 pt-2">
-              <p className="text-center text-gray-600 mb-2">
+              <p className="text-center text-gray-600 mb-2 font-bold underline text-xl">
                 Saturday, November 4, 2023
               </p>
               <p className="text-sm text-gray-600 text-center">
