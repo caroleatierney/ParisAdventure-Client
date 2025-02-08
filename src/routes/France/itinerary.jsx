@@ -63,6 +63,9 @@ export default function Itinerary() {
       }}
     >
       <div className="w-full max-w-[800px] mx-auto font-serif">
+        <div>
+          Proposed Itinerary (Until I find our own pictures to update)
+        </div>
         <Slider {...settings}>
           <div className="relative min-h-[500px] w-full">
             <img

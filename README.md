@@ -8,7 +8,9 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 
-I forgot to do this
+If you are cloning this, you need to run: npm install react-input-mask
+
+I forgot to do this:
 
 npx tailwindcss build
 npm run build to create the DIST folder

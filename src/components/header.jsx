@@ -23,7 +23,7 @@ function Header() {
               </NavLink>
             </li>
             <li className="w-full desktop:w-auto flex justify-center">
-              <NavLink to="/xxxxxxx" className="w-62">
+              <NavLink to="/VirtualAlbum" className="w-62">
                 <Button
                   size={`xs sm:sm md:md lg:lg`}
                   style={{ minWidth: "120px" }}
