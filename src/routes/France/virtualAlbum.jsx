@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Card, Button } from "flowbite-react";
+// import DisplayBlogs from "./displayBlogs";
 
 function VirtualAlbum() {
   // const location = useLocation();
@@ -39,13 +40,13 @@ function VirtualAlbum() {
       ) : (
         <div>
           <h1 className="text-center text-red-500 font-margarine text-3xl pt-2">
-            St. Lucia
+            Virtual Albums - Food, wine tour, museums, country side, locks, accomodations, people
           </h1>
           <h1 className="text-center text-red-500 font-margarine text-2xl pt-2 pb-2">
             Click on a photo to update it
           </h1>
           <div className="flex flex-row justify-center">
-            <NavLink to="/addPicsStLucia">
+            <NavLink to="/addPics">
               <Button className="bg-red-200 text-red-500 font-margarine text-lg p-1 rounded hover:bg-red-100">
                 Add new photo or video
               </Button>
@@ -60,7 +61,7 @@ function VirtualAlbum() {
               >
                 <NavLink
                   key={item._id}
-                  to={`/ViewUpdateSLPost/${item._id}`}
+                  to={`/ViewUpdateItem/${item._id}`}
                   state={{ scrollPosition: window.scrollY }}
                 >
                   <h3 className="text-center text-red-500 font-bold text-lg p-2">
@@ -89,7 +90,7 @@ function VirtualAlbum() {
         </div>
       )}
       <div className="flex justify-center">
-        <NavLink to="/addPicsStLucia">
+        <NavLink to="/addPics">
           <Button className="bg-red-200 text-red-500 p-1 rounded hover:bg-red-100">
             Add new photo or video
           </Button>

@@ -29,10 +29,10 @@ function App() {
           <Route path="/itinerary" element={<Itinerary />} />
           <Route path="/virtualAlbum" element={<VirtualAlbum />} />
           <Route path="/monaLisa" element={<MonaLisa />} />
-          <Route path="/addBlog" element={<AddBlog />} />
+          <Route path="/addBlog/:postId" element={<AddBlog />} />
           <Route path="/addItem" element={<AddItem />} />
           <Route path="/displayBlogs" element={<DisplayBlogs />} />
-          <Route path="/viewUpdateItem" element={<ViewUpdateItem />} />
+          <Route path="/viewUpdateItem/:postId" element={<ViewUpdateItem />} />
           <Route path="/updateBlog" element={<UpdateBlog />} />
         </Routes>
         <Footer />

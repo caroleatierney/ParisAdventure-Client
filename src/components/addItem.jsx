@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import InputMask from "react-input-mask";
+// import InputMask from "react-input-mask";
 
 function AddPics() {
   const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/parisMemories`;
@@ -75,7 +75,7 @@ function AddPics() {
           >
             Date taken
           </label>
-          <InputMask
+          {/* <InputMask
             mask="99/99/9999"
             maskChar={null}
             className="text-center text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
@@ -83,7 +83,7 @@ function AddPics() {
             onChange={(e) => setNewPicDate(e.target.value)}
             value={newPicDate}
             required
-          />
+          /> */}
 
           <label
             htmlFor="Image"
