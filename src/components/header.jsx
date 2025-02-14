@@ -16,7 +16,7 @@ function Header() {
                 <Button
                   size={`xs sm:sm md:md lg:lg xl:xl`}
                   style={{ minWidth: "100px" }}
-                  className="bg-red-500 text-orange-100 p-1 rounded hover:bg-red-400 w-full"
+                  className="font-delius bg-red-500 text-orange-100 p-1 rounded hover:bg-red-400 w-full"
                 >
                   Home
                 </Button>
@@ -27,7 +27,7 @@ function Header() {
                 <Button
                   size={`xs sm:sm md:md lg:lg`}
                   style={{ minWidth: "120px" }}
-                  className="bg-red-500 text-orange-100 p-1 rounded hover:bg-red-400 w-full"
+                  className="font-delius bg-red-500 text-orange-100 p-1 rounded hover:bg-red-400 w-full"
                 >
                   Virtual Album
                 </Button>
@@ -38,7 +38,7 @@ function Header() {
                 <Button
                   size={`xs sm:sm md:md lg:lg xl:xl`}
                   style={{ minWidth: "100px" }}
-                  className="bg-red-500 text-orange-100 p-1 rounded hover:bg-red-400 w-full"
+                  className="font-delius bg-red-500 text-orange-100 p-1 rounded hover:bg-red-400 w-full"
                 >
                   Itinerary
                 </Button>
@@ -49,7 +49,7 @@ function Header() {
                 <Button
                   size={`xs sm:sm md:md lg:lg xl:xl`}
                   style={{ minWidth: "100px" }}
-                  className="bg-red-500 text-orange-100 p-1 rounded hover:bg-red-400 w-full"
+                  className="font-delius bg-red-500 text-orange-100 p-1 rounded hover:bg-red-400 w-full"
                 >
                   Mona Lisa
                 </Button>
@@ -59,7 +59,7 @@ function Header() {
               <Button
                 size={`xs sm:sm md:md lg:lg`}
                 style={{ minWidth: "110px" }}
-                className="bg-red-500 text-orange-100 p-1 rounded hover:bg-red-400 w-full"
+                className="font-delius bg-red-500 text-orange-100 p-1 rounded hover:bg-red-400 w-full"
                 href="https://www.youtube.com/embed/ZM6NvOGpumI?start=68&fs=1"
                 target="_blank"
               >
@@ -70,7 +70,7 @@ function Header() {
               <Button
                 size={`xs sm:sm md:md lg:lg`}
                 style={{ minWidth: "110px" }}
-                className="bg-red-500 text-orange-100 p-1 rounded hover:bg-red-400 w-full"
+                className="font-delius bg-red-500 text-orange-100 p-1 rounded hover:bg-red-400 w-full"
                 href="https://moneyinc.com/foodies-oenophiles-walkers-and-joggers-will-love-barge-cruising-in-france/"
                 target="_blank"
               >

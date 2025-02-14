@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useId } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { Button } from "flowbite-react";
 import MaskedInput from 'react-text-mask'; 
-
 import DisplayBlogs from "./displayBlogs";
 
 const DELETE_PW = `${import.meta.env.VITE_APP_DELETE_PASSWORD}`;
@@ -25,7 +24,7 @@ function ViewUpdateItem() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const dateInputRef = useRef(null);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -119,181 +118,182 @@ function ViewUpdateItem() {
 
   // display form
   return (
-    <form className="flex flex-col" onSubmit={updatePost}>
-      <h1 className="text-center text-3xl laptop:text-6xl py-3">
-        Photos from France
-      </h1>
-
-      <div className="flex flex-col justify-center min-h-screen">
-        <div className="flex flex-col items-center desktop:flex-row desktop:items-start">
-          <div className="justify-center flex m-5 laptop:w-2/3 desktop:w-1/2">
-            {imageUrl.match(/\.(mp4|webm|ogg)$/i) ? (
-              <video
-                className="max-w-full max-h-full object-cover"
-                src={imageUrl}
-                alt={picName}
-                controls
-              >
-                Your browser does not support the video tag.
-              </video>
-            ) : (
-              <img
-                className="max-w-full max-h-full object-contain"
-                src={imageUrl}
-                alt={picName}
-              />
-            )}
-          </div>
-
-          <div className="flex flex-col items-center w-3/4 laptop:w-1/3 desktop:mt-0 desktop:w-1/2">
-            <div className="flex flex-col items-center ">
-              <div className="flex flex-col items-center">
-                <label
-                  htmlFor="title"
-                  className="xt-lg tablet:text-xl laptop:text-2xl tablet:pr-2"
+    <div>
+      <form className="flex flex-col" onSubmit={updatePost}>
+        <div className="flex flex-col justify-center min-h-screen laptop:w-5/6">
+          <div className="flex flex-col items-center desktop:flex-row desktop:items-start">
+            <div className="justify-center flex m-5 laptop:w-2/3 desktop:w-1/2 border-8 border-double border-red-800">
+              {imageUrl && imageUrl.match(/\.(mp4|webm|ogg)$/i) ? (
+                <video
+                  className="max-w-full max-h-full object-cover"
+                  src={imageUrl}
+                  alt={picName}
+                  controls
                 >
-                  Title
-                </label>
-
-                <input
-                  type="text"
-                  className="text-sm tablet:text-xl laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-orange-300 text-center rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 laptop:w-full"
-                  onChange={(e) => setPicName(e.target.value)}
-                  value={picName}
-                  required
+                  Your browser does not support the video tag.
+                </video>
+              ) : imageUrl ? (
+                <img
+                  className="max-w-full max-h-full object-contain"
+                  src={imageUrl}
+                  alt={picName}
                 />
+              ) : null}
+            </div>
+
+            <div className="font-delius flex flex-col items-center w-3/4 laptop:w-1/3 desktop:mt-0 desktop:w-1/2">
+              <div className="flex flex-col items-center ">
+                <div className="flex flex-col items-center">
+                  <label
+                    htmlFor="title"
+                    className="xt-lg tablet:text-xl laptop:text-2xl tablet:pr-2"
+                  >
+                    Title
+                  </label>
+
+                  <input
+                    type="text"
+                    className="text-sm tablet:text-xl laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-red-800 text-center rounded-md focus:outline-none focus:ring-2 focus:ring-red-100 laptop:w-full"
+                    onChange={(e) => setPicName(e.target.value)}
+                    value={picName}
+                    required
+                  />
+                </div>
+
+                <div className="mt-2 flex flex-col items-center">
+                  <label
+                    htmlFor="date"
+                    className="text-lg tablet:text-xl laptop:text-2xl"
+                  >
+                    Date taken
+                  </label>
+                  <MaskedInput
+                    mask={[
+                      /\d/,
+                      /\d/,
+                      "/",
+                      /\d/,
+                      /\d/,
+                      "/",
+                      /\d/,
+                      /\d/,
+                      /\d/,
+                      /\d/,
+                    ]}
+                    className="text-center text-sm tablet:text-xl laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-red-800 rounded-md focus:outline-none focus:ring-2 focus:ring-red-100 p-2 mt-2 laptop:mx-1"
+                    placeholder="mm/dd/yyyy"
+                    onChange={(e) => setDate(e.target.value)}
+                    value={date}
+                    required
+                  />
+                </div>
+
+                <div className="mt-2 flex flex-col items-center">
+                  <label
+                    htmlFor="Image"
+                    className="text-lg tablet:text-xl laptop:text-2xl pr-4"
+                  >
+                    Image URL
+                  </label>
+
+                  <input
+                    type="text"
+                    className="text-center text-sm tablet:text-xl laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-red-800 rounded-md focus:outline-none focus:ring-2 focus:ring-red-100 smallestMobile:mt-2"
+                    onChange={(e) => setImageUrl(e.target.value)}
+                    value={imageUrl}
+                    required
+                  />
+                </div>
               </div>
 
-              <div className="mt-2 flex flex-col items-center">
+              <div className="mt-2 flex items-center w-full flex-col">
                 <label
-                  htmlFor="date"
-                  className="text-lg tablet:text-xl laptop:text-2xl"
-                >
-                  Date taken
-                </label>
-                <MaskedInput
-                  mask={[
-                    /\d/,
-                    /\d/,
-                    "/",
-                    /\d/,
-                    /\d/,
-                    "/",
-                    /\d/,
-                    /\d/,
-                    /\d/,
-                    /\d/,
-                  ]}
-                  className="text-center text-sm tablet:text-xl laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 p-2 mt-2 laptop:mx-1"
-                  placeholder="mm/dd/yyyy"
-                  onChange={(e) => setDate(e.target.value)}
-                  value={date}
-                  required
-                />
-              </div>
-
-              <div className="mt-2 flex flex-col items-center">
-                <label
-                  htmlFor="Image"
                   className="text-lg tablet:text-xl laptop:text-2xl pr-4"
+                  htmlFor="Description"
                 >
-                  Image URL
+                  Description
                 </label>
-
-                <input
+                <textarea
+                  rows="5"
+                  className="text-xs tablet:text-xl tablet:text-orange laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-red-800 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-100 w-full mt-2"
                   type="text"
-                  className="text-center text-sm tablet:text-xl laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-orange-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-300 smallestMobile:mt-2"
-                  onChange={(e) => setImageUrl(e.target.value)}
-                  value={imageUrl}
+                  onChange={(e) => setDesc(e.target.value)}
+                  value={desc}
                   required
                 />
               </div>
-            </div>
-
-            <div className="mt-2 flex items-center w-full flex-col">
-              <label
-                className="text-lg tablet:text-xl laptop:text-2xl pr-4"
-                htmlFor="Description"
-              >
-                Description
-              </label>
-              <textarea
-                rows="5"
-                className="text-xs tablet:text-xl tablet:text-orange laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300 w-full mt-2"
-                type="text"
-                onChange={(e) => setDesc(e.target.value)}
-                value={desc}
-                required
-              />
-            </div>
-            <div className="mt-2 flex items-center w-1/3 flex-col">
-              <label
-                className="text-lg tablet:text-xl laptop:text-2xl pr-4"
-                htmlFor="Tag"
-              >
-                Image Tag
-              </label>
-              <select
-                className="text-xs tablet:text-xl tablet:text-orange laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300 w-full mt-2 text-center"
-                value={tag}
-                onChange={(e) => setTag(e.target.value)}
-                required
-              >
-                <option value="">Select a tag</option>
-                <option value="Museums">Museums</option>
-                <option value="Barge Excursions & Sight Seeing">
-                  Barge Excursions & Sight Seeing
-                </option>
-                <option value="Accomodations">Accomodations</option>
-                <option value="Locks">Locks</option>
-                <option value="Fun">Fun</option>
-                <option value="Food">Food</option>
-                <option value="People">People</option>
-                <option value="Wine Tours">Wine Tours</option>
-              </select>
-            </div>
-
-            <div className="grid grid-cols-1 tablet:grid-cols-3 gap-x-8 place-items-center m-5">
-              <Button
-                onClick={handleBackToPics}
-                className="flex items-center justify-center w-40 h-8 bg-red-200 text-bg-red-500 m-2 p-1 rounded hover:bg-red-100 text-xs"
-              >
-                👈 Virtual Album
-              </Button>
-
-              <Button
-                type="submit"
-                className="w-40 h-8 bg-red-200 text-bg-red-500 m-2 p-1 rounded hover:bg-red-100 text-xs items-center"
-                disabled={submitted}
-              >
-                {submitted ? "Saving..." : "💾 Save Updates"}
-              </Button>
-
-              <NavLink to={`/addBlog/${postId}`}>
-                <Button className="w-40 h-8 bg-red-200 text-bg-red-500 m-2 p-1 rounded hover:bg-red-100 text-xs items-center">
-                  Add a Comment
-                </Button>
-              </NavLink>
-
-              {/* <NavLink to="/grandAntiguaPics">
-                <Button
-                  onClick={removePost}
-                  className="w-40 h-8 bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xs items-center"
+              <div className="mt-2 flex items-center w-1/3 flex-col">
+                <label
+                  className="text-lg tablet:text-xl laptop:text-2xl pr-4"
+                  htmlFor="dropListId"
                 >
-                  ❌ Remove
+                  Image Tag
+                </label>
+                <select
+                  name="selectedCategory"
+                  className="text-xs tablet:text-xl tablet:text-orange laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-red-800 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-100 w-full mt-2 text-center"
+                  value={tag}
+                  onChange={(e) => setTag(e.target.value)}
+                  required
+                >
+                  <option value="">Select a tag</option>
+                  <option value="Museums">Museums</option>
+                  <option value="Barge Excursions & Sight Seeing">
+                    Barge Excursions & Sight Seeing
+                  </option>
+                  <option value="Accomodations">Accomodations</option>
+                  <option value="Locks">Locks</option>
+                  <option value="Fun">Fun</option>
+                  <option value="Food">Food</option>
+                  <option value="People">People</option>
+                  <option value="Wine Tours">Wine Tours</option>
+                </select>
+              </div>
+
+              <div className="grid grid-cols-1 tablet:grid-cols-4 gap-x-8 place-items-center m-5">
+                <Button
+                  onClick={handleBackToPics}
+                  className="font-delius flex items-center justify-center w-40 h-8 border-2 border-red-800  bg-red-200 text-bg-red-500 m-2 p-1 rounded hover:bg-red-100 text-xs"
+                >
+                  👈 Virtual Album
                 </Button>
-              </NavLink> */}
+
+                <Button
+                  type="submit"
+                  className="font-delius w-40 h-8 bg-red-200  border-2 border-red-800 text-bg-red-500 m-2 p-1 rounded hover:bg-red-100 text-xs items-center"
+                  disabled={submitted}
+                >
+                  {submitted ? "Saving..." : "💾 Save Updates"}
+                </Button>
+
+                <NavLink to={`/addBlog/${postId}`}>
+                  <Button className="font-delius w-40 h-8 bg-red-200 border-2 border-red-800 text-bg-red-500 m-2 p-1 rounded hover:bg-red-100 text-xs items-center">
+                    Add a Comment
+                  </Button>
+                </NavLink>
+
+                <NavLink to="/virtualAlbum">
+                  <Button
+                    onClick={removePost}
+                    className="font-delius w-40 h-8 bg-red-200 border-2 border-red-800 text-bg-cyan-400 m-2 p-1 rounded hover:bg-red-100 text-xs items-center"
+                  >
+                    ❌ Remove
+                  </Button>
+                </NavLink>
+              </div>
+              <p className="text-center">
+                {submitted && (
+                  <div className="success-message">
+                    Comment has been updated!
+                  </div>
+                )}
+              </p>
             </div>
-            <p className="text-center">
-              {submitted && (
-                <div className="success-message">Comment has been updated!</div>
-              )}
-            </p>
-            <DisplayBlogs />
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+      <DisplayBlogs />
+    </div>
   );
 }
 

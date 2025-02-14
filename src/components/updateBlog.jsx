@@ -120,7 +120,7 @@ function UpdateBlog() {
         method: "DELETE",
       });
       if (response.ok) {
-        navigate(`/ViewUpdateSLPost/${postId}`);
+        navigate(`/ViewUpdateItem/${postId}`);
       } else {
         console.error("Failed to delete the blog item");
       }
@@ -131,24 +131,22 @@ function UpdateBlog() {
 
   // display form
   return (
-    <div className=" bg-teal-300 w-full">
-      <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
-        St. Lucia
-      </h1>
-      <h1 className="text-center text-teal-500 font-margarine text-2xl py-3">
+    <div className="font-delius bg-teal-300 w-full">
+      <h1 className="text-center text-teal-500  text-3xl py-3">St. Lucia</h1>
+      <h1 className="text-center text-teal-500  text-2xl py-3">
         Update a Comment
       </h1>
       <form onSubmit={updateBlog}>
         <div className="flex flex-col w-3/4 max-w-3xl mx-auto text-center">
           <label
             htmlFor="Your Name"
-            className="mt-4 text-teal-500 font-margarine text-xl pb-2"
+            className="mt-4 text-teal-500  text-xl pb-2"
           >
             Your Name
           </label>
           <input
             type="text"
-            className="text-center w-full max-w-2xl text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+            className="text-center w-full max-w-2xl text-teal-500  text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
             onChange={(e) => setBlogName(e.target.value)}
             value={blogName}
             required
@@ -156,26 +154,23 @@ function UpdateBlog() {
 
           <label
             htmlFor="Comments"
-            className="mt-4 text-teal-500 font-margarine text-xl pb-2"
+            className="mt-4 text-teal-500  text-xl pb-2"
           >
             Your Comments
           </label>
           <textarea
             rows="5"
-            className="text-center w-full max-w-2xl text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+            className="text-center w-full max-w-2xl text-teal-500  text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
             onChange={(e) => setComments(e.target.value)}
             value={comments}
             required
           />
-          <label
-            htmlFor="Rating"
-            className="mt-4 text-teal-500 font-margarine text-xl pb-2"
-          >
+          <label htmlFor="Rating" className="mt-4 text-teal-500  text-xl pb-2">
             Rating
           </label>
           <input
             type="text"
-            className="w-full max-w-2xl text-teal-500 font-margarine text-center text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+            className="w-full max-w-2xl text-teal-500  text-center text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
             onChange={(e) => setRating(e.target.value)}
             value={rating}
             required

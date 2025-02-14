@@ -21,6 +21,7 @@ export default {
       fontFamily: {
         margarine: ["Margarine", "cursive"],
         sofia: ["Sofia", "serif", "sans-serif"],
+        delius: ["Delius", "serif", "sans-serif"],
       },
       fontSize: {
         mini: "0.15rem",

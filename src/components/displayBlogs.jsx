@@ -1,144 +1,101 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-// import InputMask from "react-input-mask";
+// Displays all of the blogs for post
+import React, { useState, useEffect } from "react";
+import { NavLink, useParams } from "react-router-dom";
+import { Card, Button } from "flowbite-react";
 
-function AddItem() {
-  const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/parismemories`;
-  const [newPicName, setNewPicName] = useState("");
-  const [newImageUrl, setNewImageUrl] = useState("");
-  const [newPicDate, setNewPicDate] = useState("");
-  const [newDesc, setNewDesc] = useState("");
-  const [newBlogArray] = useState([]);
-  const [submitted, setSubmitted] = useState(false);
-  const navigate = useNavigate();
+function DisplayBlogs() {
+  const { postId } = useParams();
+  const baseUrl = `${
+    import.meta.env.VITE_SERVER_URL
+  }/api/parismemories/${postId}`;
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const addPic = async (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(baseUrl);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch data: ${response.status}`);
+        }
+        const data = await response.json();
+        setData(data); // Update data state with fetched data
 
-    try {
-      const response = await fetch(baseUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          title: newPicName,
-          image: newImageUrl,
-          date: newPicDate,
-          description: newDesc,
-          blogArray: newBlogArray,
-        }),
-      });
+        // const blogEntry = data.blogArray
 
-      if (response.ok) {
-        // set form fields to blank after update
-        setNewPicName("");
-        setNewImageUrl("");
-        setNewPicDate("");
-        setNewDesc("");
-        setSubmitted(true);
-        setTimeout(() => setSubmitted(false), 2000);
-        navigate("/grandAntiguaPics");
-      } else {
-        console.log("Failed to submit data.");
+        // const blogEntry = data.blogArray.find(item => item._id === itemId); // Find the specific blog entry
+
+        // if (blogEntry) {
+        //   setBlogName(blogEntry.blogName)
+        //   setBlogDate(blogEntry.blogDate);
+        //   setComments(blogEntry.comments);
+        //   setRating(blogEntry.rating);
+        // }
+
+        setIsLoading(false);
+      } catch (error) {
+        setError("Error fetching data," + error.message);
+        setIsLoading(false);
       }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    };
+    fetchData();
+  }, [baseUrl, postId]);
 
-  // display form
   return (
-    <div className="bg-teal-300">
-      <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
-        Grand Antigua
-      </h1>
+    // Returns all blogs
+    <div>
+      {/* <pre>{JSON.stringify(data, null, 2)} </pre> */}
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p>{error}</p>
+      ) : data ? ( // Check if data is defined
+        <div className="bg-card hover:bg-card-hover rounded-md p-3 m-2 grid grid-cols-1 laptop:grid-cols-3 desktop:grid-cols-4">
+          {data.blogArray &&
+            data.blogArray.map(
+              (
+                item // Check if data.blogArray exists before mapping
+              ) => (
+                <Card
+                  key={item._id}
+                  className="max-w-sm m-2 bg-white bg-opacity-40 border-2 border-red-800"
+                >
+                  <NavLink
+                    key={item._id}
+                    to={`/UpdateBlog/${data._id}/${item._id}`}
+                  >
+                    <div>
+                      <div className="flex flex-col laptop:flex-row justify-center laptop:justify-evenly">
+                        <div>
+                          <h3 className="text-center font-delius text-lg p-2">
+                            {item.blogName}
+                          </h3>
+                        </div>
+                        <div>
+                          <h3 className="text-center font-delius text-lg p-2">
+                            {item.blogDate}
+                          </h3>
+                        </div>
+                      </div>
+                      <h3 className="text-center font-delius text-lg p-2">
+                        {item.comments}
+                      </h3>
 
-      <form onSubmit={addPic}>
-        <div className="flex flex-col w-1/4 mx-auto text-center">
-          <label
-            htmlFor="title"
-            className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
-          >
-            Title of Image
-          </label>
-
-          <input
-            type="text"
-            className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
-            onChange={(e) => setNewPicName(e.target.value)}
-            value={newPicName}
-            required
-          />
-
-          <label
-            htmlFor="Date"
-            className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
-          >
-            Date taken
-          </label>
-          {/* <InputMask
-            mask="99/99/9999"
-            maskChar={null}
-            className="text-center text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
-            placeholder="mm/dd/yyyy"
-            onChange={(e) => setNewPicDate(e.target.value)}
-            value={newPicDate}
-            required
-          /> */}
-
-          <label
-            htmlFor="Image"
-            className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
-          >
-            Image from Imgur
-          </label>
-          <input
-            type="text"
-            className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
-            onChange={(e) => setNewImageUrl(e.target.value)}
-            value={newImageUrl}
-            required
-          />
-
-          <label
-            htmlFor="Description"
-            className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
-          >
-            Description
-          </label>
-          <textarea
-            rows="5"
-            className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
-            type="text"
-            onChange={(e) => setNewDesc(e.target.value)}
-            value={newDesc}
-            required
-          />
-
-          <div className="flex flex-row w-full mx-auto justify-evenly pt-3">
-            <Link
-              to="/grandAntiguaPics"
-              className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
-            >
-              👈 back
-            </Link>
-
-            <input
-              type="submit"
-              className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
-              value={submitted ? "Saving..." : "💾 Save Comment"}
-              disabled={submitted}
-            />
-          </div>
-
-          <p className="text-center">
-            {submitted && (
-              <div className="success-message">Comment has been added!</div>
+                      <h3 className="text-center font-delius text-lg p-2">
+                        {item.rating}
+                      </h3>
+                    </div>
+                  </NavLink>
+                </Card>
+              )
             )}
-          </p>
         </div>
-      </form>
+      ) : (
+        <p>No data found.</p>
+      )}
     </div>
   );
 }
 
-export default AddItem;
+export default DisplayBlogs;

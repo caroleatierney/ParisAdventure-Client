@@ -39,15 +39,15 @@ function VirtualAlbum() {
         <p>{error}</p>
       ) : (
         <div>
-          <h1 className="text-center text-red-500 font-margarine text-3xl pt-2">
-            Virtual Albums - Food, wine tour, museums, country side, locks, accomodations, people
+          <h1 className="text-center text-black font-delius text-3xl pt-2">
+            Virtual Album
           </h1>
-          <h1 className="text-center text-red-500 font-margarine text-2xl pt-2 pb-2">
+          <h1 className="text-center text-black font-delius text-2xl pt-2 pb-2">
             Click on a photo to update it
           </h1>
           <div className="flex flex-row justify-center">
             <NavLink to="/addPics">
-              <Button className="bg-red-200 text-red-500 font-margarine text-lg p-1 rounded hover:bg-red-100">
+              <Button className="bg-red-200 text-red-500 font-delius text-lg p-1 rounded hover:bg-red-100">
                 Add new photo or video
               </Button>
             </NavLink>
@@ -57,20 +57,20 @@ function VirtualAlbum() {
             {data.map((item) => (
               <Card
                 key={item._id}
-                className="max-w-sm m-2 bg-white bg-opacity-40 border-4 border-red-900"
+                className="max-w-sm m-2 bg-white bg-opacity-40 border-4 border-double border-red-900"
               >
                 <NavLink
                   key={item._id}
                   to={`/ViewUpdateItem/${item._id}`}
                   state={{ scrollPosition: window.scrollY }}
                 >
-                  <h3 className="text-center text-red-500 font-bold text-lg p-2">
+                  <h3 className="font-delius text-center text-red-500 font-bold text-lg laptop:text-3xl p-2">
                     {item.title}
                   </h3>
 
                   {item.image.match(/\.(mp4|webm|ogg)$/i) ? (
                     <video
-                      className="w-full h-64 object-cover border-5 border-black"
+                      className="w-full h-64 object-cover border-4 border-red-300"
                       src={item.image}
                       controls
                     >
@@ -78,7 +78,7 @@ function VirtualAlbum() {
                     </video>
                   ) : (
                     <img
-                      className="w-full h-64 object-cover border-4 border-black"
+                      className="w-full h-64 object-cover border-4 border-red-300"
                       src={item.image}
                       alt={item.title}
                     />
@@ -91,7 +91,7 @@ function VirtualAlbum() {
       )}
       <div className="flex justify-center">
         <NavLink to="/addPics">
-          <Button className="bg-red-200 text-red-500 p-1 rounded hover:bg-red-100">
+          <Button className="font-delius bg-red-200 text-red-500 p-1 rounded hover:bg-red-100">
             Add new photo or video
           </Button>
         </NavLink>
