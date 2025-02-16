@@ -121,7 +121,7 @@ function AddBlog() {
 
   return (
     <div className="w-full">
-      <h1 className="text-center text-teal-500 font-delius text-2xl py-3">
+      <h1 className="text-center font-delius text-2xl py-3">
         Add a new Comment
       </h1>
 
@@ -137,7 +137,7 @@ function AddBlog() {
             </label>
             <input
               type="text"
-              className="font-delius text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+              className="font-delius text-lg bg-white bg-opacity-50 border-2 border-red-800 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
               style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
               onChange={(e) => setNewBlogName(e.target.value)}
               value={newBlogName}
@@ -154,7 +154,7 @@ function AddBlog() {
             <textarea
               type="text"
               rows="5"
-              className="font-delius text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+              className="font-delius text-lg bg-white bg-opacity-50 border-2 border-red-800 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
               onChange={(e) => setNewComments(e.target.value)}
               value={newComments}
               required
@@ -168,17 +168,15 @@ function AddBlog() {
             </label>
             <input
               type="text"
-              className="font-delius text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+              className="font-delius text-lg bg-white bg-opacity-50 border-2 border-red-800 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
               style={{ width: `${Math.max(10, newBlogName.length + 20)}ch` }}
               onChange={handleRatingChange}
               value={newRating}
               required
             />
-            {ratingError && (
-              <p className="text-sm mt-1">{ratingError}</p>
-            )}
+            {ratingError && <p className="text-sm mt-1">{ratingError}</p>}
 
-            <div className="flex items-center w-full flex-col tablet:flex-row desktop:flex-col mt-3">
+            <div className="grid grid-cols-1 tablet:grid-cols-3 gap-x-2 place-items-center m-5">
               <Button
                 onClick={() => navigate(`/viewUpdateItem/${postId}`)}
                 className="w-40 h-8 flex items-center justify-center tablet:w-auto bg-red-200  m-2 p-1 rounded hover:bg-red-100 text-xxs"
