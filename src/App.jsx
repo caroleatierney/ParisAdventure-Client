@@ -30,10 +30,22 @@ function App() {
           <Route path="/virtualAlbum" element={<VirtualAlbum />} />
           <Route path="/monaLisa" element={<MonaLisa />} />
           <Route path="/addBlog/:postId" element={<AddBlog />} />
-          <Route path="/addItem" element={<AddItem />} />
-          <Route path="/displayBlogs" element={<DisplayBlogs />} />
-          <Route path="/viewUpdateItem/:postId" element={<ViewUpdateItem />} />
-          <Route path="/updateBlog" element={<UpdateBlog />} />
+          <Route
+            path="/addItem"
+            element={<AddItem />}
+          />
+          <Route
+            path="/displayBlogs"
+            element={<DisplayBlogs />}
+          />
+          <Route 
+            path="/viewUpdateItem/:postId"
+            element={<ViewUpdateItem />}
+          />
+          <Route
+            path="/updateBlog/:postId/:itemId"
+            element={<UpdateBlog />}
+          />
         </Routes>
         <Footer />
       </div>

@@ -10,7 +10,7 @@ function UpdateBlog() {
   const navigate = useNavigate();
   const baseUrl = `${
     import.meta.env.VITE_SERVER_URL
-  }/api/blogs/${postId}`;
+  }/api/parismemories/${postId}`;
   const [blogName, setBlogName] = useState("");
   const [blogDate, setBlogDate] = useState("");
   const [comments, setComments] = useState("");
@@ -46,7 +46,7 @@ function UpdateBlog() {
     fetchData();
   }, [baseUrl, itemId]);
 
-  const updateBlog = async (e) => {
+  const updateBlogContent = async (e) => {
     e.preventDefault();
     try {
       const response = await fetch(baseUrl);
@@ -131,22 +131,21 @@ function UpdateBlog() {
 
   // display form
   return (
-    <div className="font-delius bg-teal-300 w-full">
-      <h1 className="text-center text-teal-500  text-3xl py-3">St. Lucia</h1>
-      <h1 className="text-center text-teal-500  text-2xl py-3">
+    <div className="font-delius w-full">
+      <h1 className="text-center text-2xl py-3">
         Update a Comment
       </h1>
-      <form onSubmit={updateBlog}>
-        <div className="flex flex-col w-3/4 max-w-3xl mx-auto text-center">
+      <form onSubmit={updateBlogContent}>
+        <div className="flex flex-col w-1/2 max-w-3xl mx-auto text-center">
           <label
             htmlFor="Your Name"
-            className="mt-4 text-teal-500  text-xl pb-2"
+            className="mt-4 text-xl pb-2"
           >
             Your Name
           </label>
           <input
             type="text"
-            className="text-center w-full max-w-2xl text-teal-500  text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+            className="text-center w-full max-w-2xl text-lg bg-white bg-opacity-50 border-2 border-red-800 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
             onChange={(e) => setBlogName(e.target.value)}
             value={blogName}
             required
@@ -154,28 +153,28 @@ function UpdateBlog() {
 
           <label
             htmlFor="Comments"
-            className="mt-4 text-teal-500  text-xl pb-2"
+            className="mt-4 text-xl pb-2"
           >
             Your Comments
           </label>
           <textarea
             rows="5"
-            className="text-center w-full max-w-2xl text-teal-500  text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+            className="text-center w-full max-w-2xl text-lg bg-white bg-opacity-50 border-2 border-red-800 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
             onChange={(e) => setComments(e.target.value)}
             value={comments}
             required
           />
-          <label htmlFor="Rating" className="mt-4 text-teal-500  text-xl pb-2">
+          <label htmlFor="Rating" className="mt-4 text-xl pb-2">
             Rating
           </label>
           <input
             type="text"
-            className="w-full max-w-2xl text-teal-500  text-center text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+            className="w-full max-w-2xl text-center text-lg bg-white bg-opacity-50 border-2 border-red-800 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
             onChange={(e) => setRating(e.target.value)}
             value={rating}
             required
           />
-          <div className="flex items-center w-full flex-col tablet:flex-row desktop:flex-col mt-3">
+          <div className="grid grid-cols-1 tablet:grid-cols-3 gap-x-2 place-items-center m-5">
             <Button
               onClick={() => navigate(`/viewUpdateSLPost/${postId}`)}
               className="w-40 h-8 flex items-center justify-center tablet:w-auto bg-orange-200 text-bg-cyan-400 m-2 p-1 rounded hover:bg-emerald-100 text-xxs"

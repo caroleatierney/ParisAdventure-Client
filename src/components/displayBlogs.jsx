@@ -63,7 +63,7 @@ function DisplayBlogs() {
                 >
                   <NavLink
                     key={item._id}
-                    to={`/UpdateBlog/${data._id}/${item._id}`}
+                    to={`/updateBlog/${data._id}/${item._id}`}
                   >
                     <div>
                       <div className="flex flex-col laptop:flex-row justify-center laptop:justify-evenly">
