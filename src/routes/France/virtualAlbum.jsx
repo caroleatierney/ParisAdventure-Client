@@ -46,7 +46,7 @@ function VirtualAlbum() {
             Click on a photo to update it
           </h1>
           <div className="flex flex-row justify-center">
-            <NavLink to="/addPics">
+            <NavLink to="/addItem">
               <Button className="bg-red-200 text-red-500 font-delius text-lg p-1 rounded hover:bg-red-100">
                 Add new photo or video
               </Button>
@@ -90,7 +90,7 @@ function VirtualAlbum() {
         </div>
       )}
       <div className="flex justify-center">
-        <NavLink to="/addPics">
+        <NavLink to="/addItem">
           <Button className="font-delius bg-red-200 text-red-500 p-1 rounded hover:bg-red-100">
             Add new photo or video
           </Button>

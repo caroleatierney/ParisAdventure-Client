@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import InputMask from "react-input-mask";
 
-function AddPics() {
+function AddItem() {
   const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/parisMemories`;
   const [newPicName, setNewPicName] = useState("");
   const [newImageUrl, setNewImageUrl] = useState("");
@@ -12,7 +12,7 @@ function AddPics() {
   const [submitted, setSubmitted] = useState(false);
   const navigate = useNavigate();
 
-  const addPic = async (e) => {
+  const addItemDetail = async (e) => {
     e.preventDefault();
 
     try {
@@ -36,7 +36,7 @@ function AddPics() {
         setNewDesc("");
         setSubmitted(true);
         setTimeout(() => setSubmitted(false), 2000);
-        navigate("/ourPics");
+        navigate("/virtualAlbum");
       } else {
         console.log("Failed to submit data.");
       }
@@ -47,23 +47,20 @@ function AddPics() {
 
   // display form
   return (
-    <div className="bg-teal-300">
-      <h1 className="text-center text-teal-500 font-margarine text-3xl py-3">
-        Grand Antigua
-      </h1>
+    <div className="text-center font-delius text-3xl py-3">
 
-      <form onSubmit={addPic}>
+      <form onSubmit={addItemDetail}>
         <div className="flex flex-col w-1/4 mx-auto text-center">
           <label
             htmlFor="title"
-            className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
+            className="mt-4 text-2xl pb-2"
           >
             Title of Image
           </label>
 
           <input
             type="text"
-            className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+            className="text-lg bg-white bg-opacity-50 border-2 border-red-800 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
             onChange={(e) => setNewPicName(e.target.value)}
             value={newPicName}
             required
@@ -71,7 +68,7 @@ function AddPics() {
 
           <label
             htmlFor="Date"
-            className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
+            className="mt-4 text-2xl pb-2"
           >
             Date taken
           </label>
@@ -87,13 +84,13 @@ function AddPics() {
 
           <label
             htmlFor="Image"
-            className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
+            className="mt-4 text-2xl pb-2"
           >
             Image from Imgur
           </label>
           <input
             type="text"
-            className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+            className="text-lg bg-white bg-opacity-50 border-2 border-red-800 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-200"
             onChange={(e) => setNewImageUrl(e.target.value)}
             value={newImageUrl}
             required
@@ -101,30 +98,30 @@ function AddPics() {
 
           <label
             htmlFor="Description"
-            className="mt-4 text-teal-500 font-margarine text-2xl pb-2"
+            className="mt-4 text-2xl pb-2"
           >
             Description
           </label>
           <textarea
             rows="5"
-            className="text-teal-500 font-margarine text-lg bg-white bg-opacity-50 border-2 border-orange-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-orange-300"
+            className="text-lg bg-white bg-opacity-50 border-2 border-red-800 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-300"
             type="text"
             onChange={(e) => setNewDesc(e.target.value)}
             value={newDesc}
             required
           />
 
-          <div className="flex flex-row w-full mx-auto justify-evenly pt-3">
+          <div className="flex flex-row w-full mx-auto justify-evenly pt-3 text-sm tablet:text-lg">
             <Link
-              to="/grandAntiguaPics"
-              className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
+              to="/virtualAlbum"
+              className="bg-red-200 text-bg-cyan-400 p-1 rounded hover:red-100"
             >
               👈 back
             </Link>
 
             <input
               type="submit"
-              className="bg-orange-200 text-bg-cyan-400 p-1 rounded hover:bg-emerald-100"
+              className="bg-red-200 text-bg-cyan-400 p-1 rounded hover:bg-red-100"
               value={submitted ? "Saving..." : "💾 Save Comment"}
               disabled={submitted}
             />
@@ -141,4 +138,4 @@ function AddPics() {
   );
 }
 
-export default AddPics;
+export default AddItem;

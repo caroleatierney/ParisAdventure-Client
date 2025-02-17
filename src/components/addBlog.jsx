@@ -176,7 +176,7 @@ function AddBlog() {
             />
             {ratingError && <p className="text-sm mt-1">{ratingError}</p>}
 
-            <div className="grid grid-cols-1 tablet:grid-cols-3 gap-x-2 place-items-center m-5">
+            <div className="grid grid-cols-1 tablet:grid-cols-2 gap-x-2 place-items-center m-5">
               <Button
                 onClick={() => navigate(`/viewUpdateItem/${postId}`)}
                 className="w-40 h-8 flex items-center justify-center tablet:w-auto bg-red-200  m-2 p-1 rounded hover:bg-red-100 text-xxs"
