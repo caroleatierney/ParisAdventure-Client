@@ -1,7 +1,7 @@
 // Displays all of the pictures added to MongoDB of ParisMemories
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { Card, Button } from "flowbite-react";
+import { Card, Button, Select } from "flowbite-react";
 // import DisplayBlogs from "./displayBlogs";
 
 function VirtualAlbum() {
@@ -10,11 +10,18 @@ function VirtualAlbum() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [category, setCategory] = useState("all"); // Add category state
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
+      setError(null);
       try {
-        const response = await fetch(baseUrl);
+        let url = baseUrl;
+        if (category !== "all") {
+          url += `?category=${category}`; // Add category as query parameter
+        }
+        const response = await fetch(url);
         if (!response.ok) {
           throw new Error(`Failed to fetch data: ${response.status}`);
         }
@@ -27,7 +34,11 @@ function VirtualAlbum() {
       }
     };
     fetchData();
-  }, []);
+  }, [category]); // Re-fetch data when category changes
+
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
+  };
 
   return (
     // Returns all images
@@ -45,9 +56,26 @@ function VirtualAlbum() {
           <h1 className="text-center text-black font-delius text-2xl pt-2 pb-2">
             Click on a photo to update it
           </h1>
+          <Select
+            className="bg-red-200 text-red-800 border-2 border-red-800 font-delius text-lg rounded hover:bg-red-100"
+            style={{
+              height: "32px",
+              width: "150px",
+              display: "flex",
+              alignItems: "center",
+              padding: "0.25rem",
+            }} // or adjust padding as needed.
+            value={category}
+            onChange={handleCategoryChange}
+          >
+            <option value="all">All Categories</option>
+            <option value="nature">People</option>
+            <option value="city">Food</option>
+          </Select>
+
           <div className="flex flex-row justify-center">
             <NavLink to="/addItem">
-              <Button className="bg-red-200 text-red-500 font-delius text-lg p-1 rounded hover:bg-red-100">
+              <Button className="bg-red-200 text-red-800 border-2 border-red-800  font-delius text-lg p-1 rounded hover:bg-red-100 h-8 items-center">
                 Add new photo or video
               </Button>
             </NavLink>
@@ -91,7 +119,7 @@ function VirtualAlbum() {
       )}
       <div className="flex justify-center">
         <NavLink to="/addItem">
-          <Button className="font-delius bg-red-200 text-red-500 p-1 rounded hover:bg-red-100">
+          <Button className="bg-red-200 text-red-800 border-2 border-red-800  font-delius text-lg p-1 h-8 items-center rounded hover:bg-red-100">
             Add new photo or video
           </Button>
         </NavLink>

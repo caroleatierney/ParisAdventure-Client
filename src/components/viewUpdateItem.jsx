@@ -60,7 +60,7 @@ function ViewUpdateItem() {
     const scrollPosition = window.scrollY;
 
     // Navigate back with scroll position in state
-    navigate("/parismemories", { state: { scrollPosition } });
+    navigate("/VirtualAlbum", { state: { scrollPosition } });
   };
 
   const updatePost = async (e) => {
@@ -222,6 +222,7 @@ function ViewUpdateItem() {
                   required
                 />
               </div>
+
               <div className="mt-2 flex items-center w-1/3 flex-col">
                 <label
                   className="text-lg tablet:text-xl laptop:text-2xl pr-4"
@@ -250,24 +251,24 @@ function ViewUpdateItem() {
                 </select>
               </div>
 
-              <div className="grid grid-cols-1 tablet:grid-cols-4 gap-x-8 place-items-center m-5">
+              <div className="grid grid-cols-1 tablet:grid-cols-4 gap-4 text-xs place-items-center mt-5">
                 <Button
                   onClick={handleBackToPics}
-                  className="font-delius flex items-center justify-center w-40 h-8 border-2 border-red-800  bg-red-200 text-bg-red-500 m-2 p-1 rounded hover:bg-red-100 text-xs"
+                  className="font-delius flex items-center justify-center w-36 h-8 border-2 border-red-800  bg-red-200 text-bg-red-500 rounded hover:bg-red-100 text-xs"
                 >
                   👈 Virtual Album
                 </Button>
 
                 <Button
                   type="submit"
-                  className="font-delius w-40 h-8 bg-red-200  border-2 border-red-800 text-bg-red-500 m-2 p-1 rounded hover:bg-red-100 text-xs items-center"
+                  className="font-delius w-36 h-8 bg-red-200  border-2 border-red-800 text-bg-red-500 m-2 rounded hover:bg-red-100 items-center"
                   disabled={submitted}
                 >
                   {submitted ? "Saving..." : "💾 Save Updates"}
                 </Button>
 
                 <NavLink to={`/addBlog/${postId}`}>
-                  <Button className="font-delius w-40 h-8 bg-red-200 border-2 border-red-800 text-bg-red-500 m-2 p-1 rounded hover:bg-red-100 text-xs items-center">
+                  <Button className="font-delius w-36 h-8 bg-red-200 border-2 border-red-800 text-bg-red-500 m-2 rounded hover:bg-red-100 items-center">
                     Add a Comment
                   </Button>
                 </NavLink>
@@ -275,7 +276,7 @@ function ViewUpdateItem() {
                 <NavLink to="/virtualAlbum">
                   <Button
                     onClick={removePost}
-                    className="font-delius w-40 h-8 bg-red-200 border-2 border-red-800 text-bg-cyan-400 m-2 p-1 rounded hover:bg-red-100 text-xs items-center"
+                    className="font-delius w-36 h-8 bg-red-200 border-2 border-red-800 text-bg-cyan-400 m-2 rounded hover:bg-red-100 items-center"
                   >
                     ❌ Remove
                   </Button>
