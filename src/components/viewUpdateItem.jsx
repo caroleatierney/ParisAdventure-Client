@@ -120,12 +120,12 @@ function ViewUpdateItem() {
   return (
     <div>
       <form className="flex flex-col" onSubmit={updatePost}>
-        <div className="flex flex-col justify-center min-h-screen laptop:w-5/6">
-          <div className="flex flex-col items-center desktop:flex-row desktop:items-start">
-            <div className="justify-center flex m-5 laptop:w-2/3 desktop:w-1/2 border-8 border-double border-red-800">
+        <div className="flex flex-col justify-center min-h-screen">
+          <div className="flex flex-col items-center desktop:flex-row">
+            <div className="justify-center flex m-5 laptop:w-1/3">
               {imageUrl && imageUrl.match(/\.(mp4|webm|ogg)$/i) ? (
                 <video
-                  className="max-w-full max-h-full object-cover"
+                  className="max-w-full max-h-full object-contain border-8 border-double border-red-800"
                   src={imageUrl}
                   alt={picName}
                   controls
@@ -134,14 +134,14 @@ function ViewUpdateItem() {
                 </video>
               ) : imageUrl ? (
                 <img
-                  className="max-w-full max-h-full object-contain"
+                  className="max-w-full max-h-full object-contain border-8 border-double border-red-800"
                   src={imageUrl}
                   alt={picName}
                 />
               ) : null}
             </div>
 
-            <div className="font-delius flex flex-col items-center w-3/4 laptop:w-1/3 desktop:mt-0 desktop:w-1/2">
+            <div className="font-delius flex flex-col items-center w-3/4 laptop:w-1/3 desktop:mt-0 desktop:w-1/2 m-5">
               <div className="flex flex-col items-center ">
                 <div className="flex flex-col items-center">
                   <label
@@ -215,7 +215,7 @@ function ViewUpdateItem() {
                 </label>
                 <textarea
                   rows="5"
-                  className="text-xs tablet:text-xl tablet:text-orange laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-red-800 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-100 w-full mt-2"
+                  className="text-xs tablet:text-xl tablet:text-orange laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-red-800 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-100 w-full mt-2 text-center"
                   type="text"
                   onChange={(e) => setDesc(e.target.value)}
                   value={desc}

@@ -1,7 +1,7 @@
 // Displays all of the pictures added to MongoDB of ParisMemories
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { Card, Button, Select } from "flowbite-react";
+import { Card, Button } from "flowbite-react";
 // import DisplayBlogs from "./displayBlogs";
 
 function VirtualAlbum() {
@@ -10,6 +10,7 @@ function VirtualAlbum() {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [tag, setTag] = useState("");
   const [category, setCategory] = useState("all"); // Add category state
 
   useEffect(() => {
@@ -56,31 +57,36 @@ function VirtualAlbum() {
           <h1 className="text-center text-black font-delius text-2xl pt-2 pb-2">
             Click on a photo to update it
           </h1>
-          <Select
-            className="bg-red-200 text-red-800 border-2 border-red-800 font-delius text-lg rounded hover:bg-red-100"
-            style={{
-              height: "32px",
-              width: "150px",
-              display: "flex",
-              alignItems: "center",
-              padding: "0.25rem",
-            }} // or adjust padding as needed.
-            value={category}
-            onChange={handleCategoryChange}
-          >
-            <option value="all">All Categories</option>
-            <option value="nature">People</option>
-            <option value="city">Food</option>
-          </Select>
 
-          <div className="flex flex-row justify-center">
-            <NavLink to="/addItem">
-              <Button className="bg-red-200 text-red-800 border-2 border-red-800  font-delius text-lg p-1 rounded hover:bg-red-100 h-8 items-center">
-                Add new photo or video
-              </Button>
-            </NavLink>
+          <div className="flex flex-row justify-evenly">
+            <select
+              name="selectedCategory"
+              className="text-xs tablet:text-xl tablet:text-orange laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-red-800 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-100 w-full mt-2 text-center"
+              value={tag}
+              onChange={(e) => setTag(e.target.value)}
+              required
+            >
+              <option value="">Select a tag</option>
+              <option value="Museums">Museums</option>
+              <option value="Barge Excursions & Sight Seeing">
+                Barge Excursions & Sight Seeing
+              </option>
+              <option value="Accomodations">Accomodations</option>
+              <option value="Locks">Locks</option>
+              <option value="Fun">Fun</option>
+              <option value="Food">Food</option>
+              <option value="People">People</option>
+              <option value="Wine Tours">Wine Tours</option>
+            </select>
+
+            <div className="flex flex-row justify-center">
+              <NavLink to="/addItem">
+                <Button className="bg-red-200 text-red-800 border-2 border-red-800  font-delius text-lg p-1 rounded hover:bg-red-100 h-10 w-42 items-center">
+                  Add new photo or video
+                </Button>
+              </NavLink>
+            </div>
           </div>
-
           <div className="bg-card hover:bg-card-hover rounded-md p-3 m-2 grid grid-cols-1 laptop:grid-cols-2 desktop:grid-cols-4">
             {data.map((item) => (
               <Card
@@ -98,7 +104,7 @@ function VirtualAlbum() {
 
                   {item.image.match(/\.(mp4|webm|ogg)$/i) ? (
                     <video
-                      className="w-full h-64 object-cover border-4 border-red-300"
+                      className="w-full h-84 object-contain border-4 border-red-300"
                       src={item.image}
                       controls
                     >
@@ -106,7 +112,7 @@ function VirtualAlbum() {
                     </video>
                   ) : (
                     <img
-                      className="w-full h-64 object-cover border-4 border-red-300"
+                      className="w-full h-84 object-contain border-4 border-red-300"
                       src={item.image}
                       alt={item.title}
                     />

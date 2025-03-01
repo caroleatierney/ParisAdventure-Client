@@ -16,3 +16,12 @@ npx tailwindcss build
 npm run build to create the DIST folder
 
 Client and server are both started with npm run dev
+
+Add?
+
+Map/Location stuff
+Make all titles text grow with the same size.
+Select tag and add new... the same size
+Make a panorama column so you can see more of it
+Get arrows outside of itinerary carousel
+Footer blurring itinerary
