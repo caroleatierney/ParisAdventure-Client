@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useId } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { Button } from "flowbite-react";
-import MaskedInput from 'react-text-mask'; 
+// import MaskedInput from 'react-text-mask'; 
 import DisplayBlogs from "./displayBlogs";
 
 const DELETE_PW = `${import.meta.env.VITE_APP_DELETE_PASSWORD}`;
@@ -167,7 +167,7 @@ function ViewUpdateItem() {
                   >
                     Date taken
                   </label>
-                  <MaskedInput
+                  {/* <MaskedInput
                     mask={[
                       /\d/,
                       /\d/,
@@ -185,7 +185,7 @@ function ViewUpdateItem() {
                     onChange={(e) => setDate(e.target.value)}
                     value={date}
                     required
-                  />
+                  /> */}
                 </div>
 
                 <div className="mt-2 flex flex-col items-center">
