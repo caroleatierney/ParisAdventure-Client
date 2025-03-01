@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import InputMask from "react-input-mask";
 
 function AddItem() {
   const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/parisMemories`;
