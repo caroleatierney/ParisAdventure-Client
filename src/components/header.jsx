@@ -34,8 +34,6 @@ function Header() {
               </NavLink>
             </li>
 
-
-            
             <li className="w-full desktop:w-auto flex justify-center">
               <NavLink to="/itinerary">
                 <Button
@@ -78,6 +76,17 @@ function Header() {
                 target="_blank"
               >
                 Money Inc. Review
+              </Button>
+            </li>
+            <li>
+              <Button
+                size={`xs sm:sm md:md lg:lg`}
+                style={{ minWidth: "110px" }}
+                className="font-delius bg-red-500 text-orange-100 p-1 rounded hover:bg-red-400 w-full"
+                href="  https://quirkycruise.com/french-country-waterways-adrienne"
+                target="_blank"
+              >
+                Quirky Cruise Review
               </Button>
             </li>
           </ul>

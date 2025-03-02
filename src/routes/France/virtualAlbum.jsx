@@ -61,7 +61,7 @@ function VirtualAlbum() {
           <div className="flex flex-row justify-evenly">
             <select
               name="selectedCategory"
-              className="text-xs tablet:text-xl tablet:text-orange laptop:text-2xl desktop:text-xl bg-white bg-opacity-50 border-2 border-red-800 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-100 w-full mt-2 text-center"
+              className="text-lg p-1 tablet:text-xl laptop:text-2xl text-red-800 font-delius border-2 bg-red-200 border-red-800 rounded-md focus:outline-none focus:ring-2 focus:ring-red-100 text-center"
               value={tag}
               onChange={(e) => setTag(e.target.value)}
               required
@@ -81,7 +81,7 @@ function VirtualAlbum() {
 
             <div className="flex flex-row justify-center">
               <NavLink to="/addItem">
-                <Button className="bg-red-200 text-red-800 border-2 border-red-800  font-delius text-lg p-1 rounded hover:bg-red-100 h-10 w-42 items-center">
+                <Button className="bg-red-200 text-red-800 border-2 border-red-800 font-delius text-lg tablet:text-xl laptop:text-xl p-1 rounded hover:bg-red-100 h-10 w-42 items-center">
                   Add new photo or video
                 </Button>
               </NavLink>
@@ -112,7 +112,7 @@ function VirtualAlbum() {
                     </video>
                   ) : (
                     <img
-                      className="w-full h-84 object-contain border-4 border-red-300"
+                      className="w-full h-84 object- border-4 border-red-300"
                       src={item.image}
                       alt={item.title}
                     />
@@ -123,6 +123,14 @@ function VirtualAlbum() {
           </div>
         </div>
       )}
+      {/* Adding the panoramic shot at the end because it is too big!*/}
+      <div className="m-4">
+        <img
+          className="w-full h-84 object-contain border-8 border-red-300"
+          src="https://i.imgur.com/GhvLMsl.jpg"
+          alt="Everyone in the Living Room"
+        />
+      </div>
       <div className="flex justify-center">
         <NavLink to="/addItem">
           <Button className="bg-red-200 text-red-800 border-2 border-red-800  font-delius text-lg p-1 h-8 items-center rounded hover:bg-red-100">
