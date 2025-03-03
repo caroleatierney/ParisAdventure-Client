@@ -1,50 +1,50 @@
-// Displays all of the pictures added to MongoDB of ParisMemories
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Card, Button } from "flowbite-react";
-// import DisplayBlogs from "./displayBlogs";
 
 function VirtualAlbum() {
-  // const location = useLocation();
   const baseUrl = `${import.meta.env.VITE_SERVER_URL}/api/parismemories`;
-  const [data, setData] = useState([]);
+  const [allData, setAllData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [tag, setTag] = useState("");
-  const [category, setCategory] = useState("all"); // Add category state
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
       setError(null);
       try {
-        let url = baseUrl;
-        if (category !== "all") {
-          url += `?category=${category}`; // Add category as query parameter
-        }
-        const response = await fetch(url);
+        const response = await fetch(baseUrl);
         if (!response.ok) {
           throw new Error(`Failed to fetch data: ${response.status}`);
         }
         const data = await response.json();
-        setData(data);
+        setAllData(data);
+        setFilteredData(data);
         setIsLoading(false);
       } catch (error) {
-        setError("Error fetching data," + error.message);
+        setError("Error fetching data: " + error.message);
         setIsLoading(false);
       }
     };
     fetchData();
-  }, [category]); // Re-fetch data when category changes
+  }, []);
 
-  const handleCategoryChange = (e) => {
-    setCategory(e.target.value);
+  useEffect(() => {
+    if (tag === "") {
+      setFilteredData(allData);
+    } else {
+      setFilteredData(allData.filter((item) => item.tag === tag));
+    }
+  }, [tag, allData]);
+
+  const handleTagChange = (e) => {
+    setTag(e.target.value);
   };
 
   return (
-    // Returns all images
     <div className="min-h-screen flex flex-col items-center justify-center">
-      {/* <pre>{JSON.stringify(data, null, 2)} </pre> */}
       {isLoading ? (
         <p>Loading...</p>
       ) : error ? (
@@ -60,13 +60,12 @@ function VirtualAlbum() {
 
           <div className="flex flex-row justify-evenly">
             <select
-              name="selectedCategory"
-              className="text-lg p-1 tablet:text-xl laptop:text-2xl text-red-800 font-delius border-2 bg-red-200 border-red-800 rounded-md focus:outline-none focus:ring-2 focus:ring-red-100 text-center"
+              name="selectedTag"
+              className="text-lg p-1 tablet:text-lg laptop:text-xl text-red-800 font-delius border-2 bg-red-200 border-red-800 rounded-md focus:outline-none focus:ring-2 focus:ring-red-100 text-center"
               value={tag}
-              onChange={(e) => setTag(e.target.value)}
-              required
+              onChange={handleTagChange}
             >
-              <option value="">Select a tag</option>
+              <option value="">Display All Photos</option>
               <option value="Museums">Museums</option>
               <option value="Barge Excursions & Sight Seeing">
                 Barge Excursions & Sight Seeing
@@ -88,13 +87,12 @@ function VirtualAlbum() {
             </div>
           </div>
           <div className="bg-card hover:bg-card-hover rounded-md p-3 m-2 grid grid-cols-1 laptop:grid-cols-2 desktop:grid-cols-4">
-            {data.map((item) => (
+            {filteredData.map((item) => (
               <Card
                 key={item._id}
                 className="max-w-sm m-2 bg-white bg-opacity-40 border-4 border-double border-red-900"
               >
                 <NavLink
-                  key={item._id}
                   to={`/ViewUpdateItem/${item._id}`}
                   state={{ scrollPosition: window.scrollY }}
                 >
@@ -112,7 +110,7 @@ function VirtualAlbum() {
                     </video>
                   ) : (
                     <img
-                      className="w-full h-84 object- border-4 border-red-300"
+                      className="w-full h-84 object-contain border-4 border-red-300"
                       src={item.image}
                       alt={item.title}
                     />
@@ -123,21 +121,7 @@ function VirtualAlbum() {
           </div>
         </div>
       )}
-      {/* Adding the panoramic shot at the end because it is too big!*/}
-      <div className="m-4">
-        <img
-          className="w-full h-84 object-contain border-8 border-red-300"
-          src="https://i.imgur.com/GhvLMsl.jpg"
-          alt="Everyone in the Living Room"
-        />
-      </div>
-      <div className="flex justify-center">
-        <NavLink to="/addItem">
-          <Button className="bg-red-200 text-red-800 border-2 border-red-800  font-delius text-lg p-1 h-8 items-center rounded hover:bg-red-100">
-            Add new photo or video
-          </Button>
-        </NavLink>
-      </div>
+      {/* Rest of your component... */}
     </div>
   );
 }
